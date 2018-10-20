@@ -1,2 +1,8 @@
 # assignment4
-Registrar with Matthew Parnham
+## Registrar
+
+Tristan Chilvers
+2288893
+chilvers@chapman.edu
+
+Matthew Parnham
