@@ -4,8 +4,8 @@ using namespace std;
 
 class GenQueue {
 public:
-  GenQeueue();
-  GeneQueue(int maxSize);
+  GenQueue();
+  GenQueue(int maxSize);
   ~GenQueue();
   void insert(char data);
   char remove();

@@ -2,29 +2,29 @@
 
 using namespace std;
 
-GenQeueue::GenQeueue() {
+GenQueue::GenQueue() {
   front = -1;
   rear = 0;
   numElements = 0;
   size = 10;
   myQueue = new char[size];
 }
-GenQeueue::~GenQueue() {
+GenQueue::~GenQueue() {
 
 }
-void GenQeueue::insert(char data) {
+void GenQueue::insert(char data) {
   myQueue.insertRear(data);
 }
-char GenQeueue::remove() {
+char GenQueue::remove() {
   return myQueue.removeFront();
 }
-char GenQeueue::peek() {
+char GenQueue::peek() {
   return myQueue.front;
 }
 
-bool GenQeueue::isFull() {
+bool GenQueue::isFull() {
   //dynamic size.. will never be full
 }
-bool GenQeueue::isEmpty() {
+bool GenQueue::isEmpty() {
   return myQueue == NULL;
 }
