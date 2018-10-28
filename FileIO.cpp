@@ -8,12 +8,17 @@ using namespace std;
 //constructors==================================================================
 FileIO::FileIO()
 {
-  cerr << "Cannot open file. Please put a string object into the argument." << endl;
+  cout << "Only file output is created." << endl;
+
+  string outName; //request for output file name and create one within directory
+  cout << "What would you like to call the output file? (Be wary of characters your OS does not allow for file names): ";
+  cin >> outName;
+  outputFile.open(outName);
 }
 
-FileIO::FileIO(string filePath)
+FileIO::FileIO(string filePath) //open a file at requested path, ask if output file will be created
 {
-  try
+  try //try to open file, throw error if impossible
   {
     inputFile.open(filePath);
     if(!inputFile.is_open())
@@ -29,13 +34,25 @@ FileIO::FileIO(string filePath)
     exit(1);
   }
 
-  cout << "What would you like to call the output file?: "
-  outputFile.open()
+  char ans; //ask if output file will be created
+  do {
+    cout << "Would you like to create a output file? ('y'|'n'):";
+    cin >> ans;
+  } while(ans != 'y' && ans != 'Y' && ans != 'n' && ans != 'N');
+
+  if(ans == 'y' || ans == 'Y') //create output file
+  {
+    string outName;
+    cout << "What would you like to call the output file? (Be wary of characters your OS does not allow for file names): ";
+    cin >> outName;
+    outputFile.open(outName);
+  }
 }
 
-FileIO::~FileIO()
+FileIO::~FileIO() //close files
 {
   inputFile.close();
+  outputFile.close();
 }
 
 //auxiliary functions===========================================================
@@ -65,4 +82,9 @@ bool FileIO::checkOpen()
 ifstream& FileIO::getInFile()
 {
   return inputFile;
+}
+
+ofstream& FileIO::getOutFile()
+{
+  return outputFile;
 }

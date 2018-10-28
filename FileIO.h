@@ -15,9 +15,9 @@ class FileIO
 {
   public:
     //constructors
-    FileIO(); //will output error stating that constructor must take a file path argument
-    FileIO(string filePath);
-    ~FileIO();
+    FileIO(); //will only create an output file
+    FileIO(string filePath); //will create an input file stream, and ask if output is necessary and create one if so
+    ~FileIO(); //close file open and close stream
 
     //auxiliary functions
     void printFile();
