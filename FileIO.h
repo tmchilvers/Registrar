@@ -8,9 +8,16 @@
 using namespace std;
 
 
-//This class can read in a file and process the characters on each line.
-//Must declare name of file as a string. Create the InFile object and put the name
-//into the constructor argument
+//This class can read in a file and print the characters on each line.
+//This class can also make an output file for your program.
+//Programmer can get access to the file stream objects with the get functions.
+//Can check if inFile is open
+/*
+Two constructors:
+- Default will only create an output file.
+- String agument constructor will open the input file of that string name, and
+requests for an output file name if the user chooses to make one
+*/
 class FileIO
 {
   public:
