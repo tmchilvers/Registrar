@@ -24,7 +24,7 @@ class FileIO
     //constructors
     FileIO(); //will only create an output file
     FileIO(string filePath); //will create an input file stream, and ask if output is necessary and create one if so
-    ~FileIO(); //close file open and close stream
+    ~FileIO(); //close inputFile and outputFile streamss
 
     //auxiliary functions
     void printFile();
