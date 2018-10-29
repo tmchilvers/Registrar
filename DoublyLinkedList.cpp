@@ -37,7 +37,7 @@ void DoublyLinkedList::insertFront(int d)
   else //not empty
   {
     front->prev = node;
-    mode->next = front;
+    node->next = front;
   }
 
   front = node;
