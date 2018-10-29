@@ -225,3 +225,5 @@ void GenDoubleLL<T>::printList()
     curr = curr->next;
   }
 }
+
+#endif
