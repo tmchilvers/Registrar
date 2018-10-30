@@ -1,33 +1,33 @@
 #ifndef GENDOUBLYLL_H
 #define GENDOUBLYLL_H
 
-#include "ListNode.h"
+//#include "ListNode.h"
 #include <iostream>
 
 using namespace std;
 
-class IDoublyLinkedList
-{
-  public:
-    virtual void insertFront(int d) = 0;
-    virtual void removeBack(int d) = 0;
-    virtual int removeFront() = 0;
-    virtual int removeBack() = 0;
-    virtual ListNode *remove(int key) = 0;
-
-    virtual int deletePos(int pos) = 0;
-    virtual int find(int value) = 0;
-
-    virtual void printList() = 0;
-    virtual unsigned int getSize() = 0;
-};
+// class IDoublyLinkedList
+// {
+//   public:
+//     virtual void insertFront(int d) = 0;
+//     virtual void removeBack(int d) = 0;
+//     virtual int removeFront() = 0;
+//     virtual int removeBack() = 0;
+//     virtual ListNode *remove(int key) = 0;
+//
+//     virtual int deletePos(int pos) = 0;
+//     virtual int find(int value) = 0;
+//
+//     virtual void printList() = 0;
+//     virtual unsigned int getSize() = 0;
+// };
 
 
 
 
 //template class================================================================
 template <class T>
-class GenDoublyLL // : public IDoubleLinkedList
+class GenDoublyLL //: public IDoubleLinkedList
 {
   private:
     ListNode *front;
@@ -49,6 +49,8 @@ class GenDoublyLL // : public IDoubleLinkedList
 
     void printList();
     unsigned int getSize();
+    ListNode getFront();
+    ListNode getBack();
 };
 
 //template functions============================================================
@@ -280,6 +282,18 @@ void GenDoublyLL<T>::printList()
     cout << curr->data << endl;
     curr = curr->next;
   }
+}
+
+template <class T>
+ListNode GenDoublyLL<T>::getFront()
+{
+  return front;
+}
+
+template <class T>
+ListNode GenDoublyLL<T>::getBack()
+{
+  return back;
 }
 
 #endif

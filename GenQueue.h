@@ -26,6 +26,7 @@ private:
   T *myQueue;
 };
 
+//Template Functions============================================================
 template <class T>
 GenQueue<T>::GenQueue() {
   front = NULL;
