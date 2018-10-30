@@ -33,7 +33,6 @@ ListNode<T>::ListNode(T d)
 template <class T>
 ListNode<T>::~ListNode()
 {
-  delete data;
   delete next;
   delete prev;
 }
