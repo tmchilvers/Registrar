@@ -1,13 +1,41 @@
+#ifndef LISTNODE_H
+#define LISTNODE_H
+
 
 template <class T>
 class ListNode
 {
     public:
       ListNode();
-      ListNode(int d);
+      ListNode(T d);
       ~ListNode();
 
-      int data;
-      ListNode *next;
-      ListNode *prev;
+      T data;
+      ListNode<T> *next;
+      ListNode<T> *prev;
 };
+
+template <class T>
+ListNode<T>::ListNode()
+{
+  next = nullptr;
+  prev = nullptr;
+}
+
+template <class T>
+ListNode<T>::ListNode(T d)
+{
+  data = d;
+  next = nullptr; //nullptr
+  prev = nullptr; //nullptr
+}
+
+template <class T>
+ListNode<T>::~ListNode()
+{
+  delete data;
+  delete next;
+  delete prev;
+}
+
+#endif

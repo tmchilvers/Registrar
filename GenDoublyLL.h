@@ -1,7 +1,7 @@
 #ifndef GENDOUBLYLL_H
 #define GENDOUBLYLL_H
 
-//#include "ListNode.h"
+#include "ListNode.h"
 #include <iostream>
 
 using namespace std;
@@ -30,8 +30,8 @@ template <class T>
 class GenDoublyLL //: public IDoubleLinkedList
 {
   private:
-    ListNode *front;
-    ListNode *back;
+    ListNode<T> *front;
+    ListNode<T> *back;
     unsigned int size;
 
   public:
@@ -42,15 +42,15 @@ class GenDoublyLL //: public IDoubleLinkedList
     void insertBack(T);
     T removeFront();
     T removeBack();
-    ListNode *remove(T key);
+    ListNode<T> *remove(T key);
 
     T deletePos(int pos);
     int find(T value);
 
     void printList();
     unsigned int getSize();
-    ListNode getFront();
-    ListNode getBack();
+    ListNode<T> getFront();
+    ListNode<T> getBack();
 };
 
 //template functions============================================================
@@ -67,7 +67,7 @@ GenDoublyLL<T>::~GenDoublyLL()
 {
   while(front->next != NULL)
   {
-    ListNode *curr = front;
+    ListNode<T> *curr = front;
     front = curr->next;
     front->prev = NULL;
     curr->next = NULL;
@@ -79,9 +79,9 @@ GenDoublyLL<T>::~GenDoublyLL()
 template <class T>
 void GenDoublyLL<T>::insertFront(T d)
 {
-  ListNode *node = new ListNode(d);
+  ListNode<T> *node = new ListNode<T>(d);
 
-  if(size == 0) //empty ListNode
+  if(size == 0) //empty ListNode<T>
   {
     back = node;
   }
@@ -99,7 +99,7 @@ void GenDoublyLL<T>::insertFront(T d)
 template <class T>
 void GenDoublyLL<T>::insertBack(T d)
 {
-  ListNode *node = new ListNode();
+  ListNode<T> *node = new ListNode<T>();
    if (size == 0) {
      front = node;
    }
@@ -115,7 +115,7 @@ void GenDoublyLL<T>::insertBack(T d)
 template <class T>
 T GenDoublyLL<T>::removeFront()
 {
-  ListNode *temp = front;
+  ListNode<T> *temp = front;
 
   if(size == 0)
   {
@@ -123,11 +123,11 @@ T GenDoublyLL<T>::removeFront()
     return;
   }
 
-  else if (front->next == NULL) { //only node in listNode;
+  else if (front->next == NULL) { //only node in ListNode<T>;
     back = NULL;
   }
 
-  else // more than one node in listNode
+  else // more than one node in ListNode<T>
   {
     front->next->prev = NULL;
   }
@@ -144,7 +144,7 @@ T GenDoublyLL<T>::removeFront()
 template <class T>
 T GenDoublyLL<T>::removeBack()
 {
-  ListNode *temp = back;
+  ListNode<T> *temp = back;
   if(size == 0)
   {
     cerr << "Nothing to remove" << endl;
@@ -170,9 +170,9 @@ T GenDoublyLL<T>::removeBack()
 }
 
 template <class T>
-ListNode* GenDoublyLL<T>::remove(T key)
+ListNode<T>* GenDoublyLL<T>::remove(T key)
 {
-  ListNode *current = front;
+  ListNode<T> *current = front;
 
   while(current->data != key)
   {
@@ -214,7 +214,7 @@ template <class T>
 int GenDoublyLL<T>::find(T value)
 {
   int idx = -1;
-  ListNode *curr = front;
+  ListNode<T> *curr = front;
 
   while(curr != NULL) //begin search for value
   {
@@ -243,8 +243,8 @@ T GenDoublyLL<T>::deletePos(int pos)
 {
   int idx = 0;
 
-  ListNode *curr = front;
-  ListNode *prev = front;
+  ListNode<T> *curr = front;
+  ListNode<T> *prev = front;
 
   while(idx != pos) //this loop is responsible for putting our pointers in their correct positions
   {
@@ -275,7 +275,7 @@ unsigned int GenDoublyLL<T>::getSize()
 template <class T>
 void GenDoublyLL<T>::printList()
 {
-  ListNode *curr = front;
+  ListNode<T> *curr = front;
 
   while(curr != NULL)
   {
@@ -285,13 +285,13 @@ void GenDoublyLL<T>::printList()
 }
 
 template <class T>
-ListNode GenDoublyLL<T>::getFront()
+ListNode<T> GenDoublyLL<T>::getFront()
 {
   return front;
 }
 
 template <class T>
-ListNode GenDoublyLL<T>::getBack()
+ListNode<T> GenDoublyLL<T>::getBack()
 {
   return back;
 }

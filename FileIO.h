@@ -1,12 +1,11 @@
-#ifndef FileIO_H
-#define FileIO_H
+#ifndef FILEIO_H
+#define FILEIO_H
 
 #include <fstream>
 #include <iostream>
 #include <string>
 
 using namespace std;
-
 
 //This class can read in a file and print the characters on each line.
 //This class can also make an output file for your program.

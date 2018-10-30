@@ -1,6 +1,7 @@
 #ifndef GENQUEUE_H
 #define GENQUEUE_H
 
+#include "GenDoublyLL.h"
 #include <iostream>
 
 using namespace std;
@@ -11,14 +12,14 @@ public:
   GenQueue();
   ~GenQueue();
   void insert(const T& data);
-  char remove();
-  char peek();
+  T remove();
+  T peek();
 
   bool isEmpty();
   int getSize();
 private:
-  //ListNode *front;
-  //ListeNode *back;
+  //ListNode<T> *front;
+  //ListeNode<T> *back;
   int size;
   T *myQueue;
 };
@@ -26,8 +27,8 @@ private:
 //Template Functions============================================================
 template <class T>
 GenQueue<T>::GenQueue() {
-  front = NULL;
-  rear = NULL;
+  //front = NULL;
+  //rear = NULL;
   size = 0;
   myQueue = new GenDoublyLL<T>();
 }
@@ -38,7 +39,7 @@ GenQueue<T>::~GenQueue() {
 }
 
 template <class T>
-void GenQueue<T>::insert(char data) {
+void GenQueue<T>::insert(const T& data) {
   myQueue.insertBack(data);
   size++;
 }

@@ -1,5 +1,8 @@
+#ifndef SIMSTATS_H
+#define SIMSTATS_H
+
 #include "GenQueue.h"
-#include "LinkedList.h"
+#include "GenDoublyLL.h"
 #include "SimStats.h"
 #include "Simulation.h"
 #include "Window.h"
@@ -11,7 +14,9 @@ class SimStats {
 public:
   SimStats();
   ~SimStats();
-  
+
 private:
 
 };
+
+#endif

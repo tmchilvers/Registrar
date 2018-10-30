@@ -1,5 +1,8 @@
+#ifndef STUDENT_H
+#define STUDENT_H
+
 #include "GenQueue.h"
-#include "LinkedList.h"
+#include "GenDoublyLL.h"
 #include "SimStats.h"
 #include "Simulation.h"
 #include "Window.h"
@@ -23,3 +26,5 @@ private:
   int waitTime; //wait time in minutes
   int qLength; //length of student's question in minutes
 };
+
+#endif

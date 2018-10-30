@@ -1,5 +1,5 @@
 #include "GenQueue.h"
-#include "LinkedList.h"
+#include "GenDoublyLL.h"
 #include "SimStats.h"
 #include "Simulation.h"
 #include "Student.h"
@@ -16,8 +16,6 @@ Window::~Window() {
 }
 
 Student Window::getStudent() {
-  return currStudent
 }
 void Window::setStudent(Student& s) {
-  currStudent = s;
 }

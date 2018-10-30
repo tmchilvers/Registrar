@@ -1,5 +1,8 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include "GenQueue.h"
-#include "LinkedList.h"
+#include "GenDoublyLL.h"
 #include "SimStats.h"
 #include "Simulation.h"
 #include "Window.h"
@@ -18,3 +21,5 @@ public:
 private:
   Student *currStudent;
 };
+
+#endif

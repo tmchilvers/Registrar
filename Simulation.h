@@ -1,5 +1,8 @@
+#ifndef SIMULATION_H
+#define SIMULATION_H
+
 #include "GenQueue.h"
-#include "LinkedList.h"
+#include "GenDoublyLL.h"
 #include "SimStats.h"
 #include "Simulation.h"
 #include "Window.h"
@@ -12,7 +15,9 @@ class Simulation {
 public:
   Simulation();
   ~Simulation();
-  
+
 private:
 
 };
+
+#endif
