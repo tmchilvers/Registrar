@@ -1,3 +1,5 @@
+
+template <class T>
 class ListNode
 {
     public:
