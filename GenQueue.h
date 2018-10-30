@@ -63,7 +63,7 @@ T GenQueue<T>::peek() {
     return 0;
   }
   else {
-    return myQueue->getFront().data;
+    return myQueue->getFront()->data;
   }
 }
 

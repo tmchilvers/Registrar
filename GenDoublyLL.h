@@ -49,8 +49,8 @@ class GenDoublyLL //: public IDoubleLinkedList
 
     void printList();
     unsigned int getSize();
-    ListNode<T> getFront();
-    ListNode<T> getBack();
+    ListNode<T>* getFront();
+    ListNode<T>* getBack();
 };
 
 //template functions============================================================
@@ -120,7 +120,7 @@ T GenDoublyLL<T>::removeFront()
   if(size == 0)
   {
     cerr << "Nothing to remove" << endl;
-    return;
+    return 0;
   }
 
   else if (front->next == NULL) { //only node in ListNode<T>;
@@ -148,7 +148,7 @@ T GenDoublyLL<T>::removeBack()
   if(size == 0)
   {
     cerr << "Nothing to remove" << endl;
-    return;
+    return 0;
   }
 
   else if (front->next == NULL)
@@ -285,13 +285,13 @@ void GenDoublyLL<T>::printList()
 }
 
 template <class T>
-ListNode<T> GenDoublyLL<T>::getFront()
+ListNode<T>* GenDoublyLL<T>::getFront()
 {
   return front;
 }
 
 template <class T>
-ListNode<T> GenDoublyLL<T>::getBack()
+ListNode<T>* GenDoublyLL<T>::getBack()
 {
   return back;
 }

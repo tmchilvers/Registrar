@@ -7,7 +7,7 @@ class IDoublyLinkedList
     virtual void removeBack(int d) = 0;
     virtual T removeFront() = 0;
     virtual T removeBack() = 0;
-    virtual ListNode *remove(int key) = 0;
+    virtual ListNode<T> *remove(int key) = 0;
 
     virtual T deletePos(int pos) = 0;
     virtual T find(int value) = 0;
