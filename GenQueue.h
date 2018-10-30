@@ -9,19 +9,16 @@ template <class T>
 class GenQueue {
 public:
   GenQueue();
-  GenQueue(int maxSize);
   ~GenQueue();
   void insert(const T& data);
   char remove();
   char peek();
 
-  bool isFull();
   bool isEmpty();
   int getSize();
 private:
-  int front;
-  int rear;
-  int numElements;
+  //ListNode *front;
+  //ListeNode *back;
   int size;
   T *myQueue;
 };
@@ -30,39 +27,52 @@ template <class T>
 GenQueue<T>::GenQueue() {
   front = NULL;
   rear = NULL;
-  numElements = 0;
-  size = 100;
-  myQueue = new DoublyLinkedList();
+  size = 0;
+  myQueue = new GenDoublyLL<T>();
 }
 
 template <class T>
 GenQueue<T>::~GenQueue() {
-
+  delete myQueue;
 }
 
 template <class T>
 void GenQueue<T>::insert(char data) {
   myQueue.insertBack(data);
+  size++;
 }
 
 template <class T>
-char GenQueue<T>::remove() {
-  return myQueue.removeFront();
+T GenQueue<T>::remove() {
+  if(size < 1) {
+    cout << "Queue empty." << endl;
+    return;
+  }
+  else {
+    return myQueue.removeFront();
+    size--;
+  }
 }
 
 template <class T>
-char GenQueue<T>::peek() {
-  return myQueue.front;
-}
-
-template <class T>
-bool GenQueue<T>::isFull() {
-  //dynamic size.. will never be full
+T GenQueue<T>::peek() {
+  if(size < 1) {
+    cout << "Queue empty." << endl;
+    return;
+  }
+  else {
+    return myQueue.getFront();
+  }
 }
 
 template <class T>
 bool GenQueue<T>::isEmpty() {
-  return myQueue == NULL;
+  return size == 0;
+}
+
+template <class T>
+int GenQueue<T>::getSize() {
+  return size;
 }
 
 #endif
