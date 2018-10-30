@@ -17,4 +17,14 @@ int main(int argc, char **argv) {
   else {
     filePath = argv[1];
   }
+
+  //testing
+  GenQueue<int> q;
+  q.insert(5);
+  cout << q.peek() << endl;
+  q.insert(4);
+  q.insert(10);
+  while(!q.isEmpty()) {
+    cout << q.remove() << endl;
+  }
 }

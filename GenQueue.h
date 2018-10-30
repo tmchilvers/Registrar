@@ -21,7 +21,7 @@ private:
   //ListNode<T> *front;
   //ListeNode<T> *back;
   int size;
-  T *myQueue;
+  GenDoublyLL<T> *myQueue;
 };
 
 //Template Functions============================================================
@@ -40,7 +40,7 @@ GenQueue<T>::~GenQueue() {
 
 template <class T>
 void GenQueue<T>::insert(const T& data) {
-  myQueue.insertBack(data);
+  myQueue->insertBack(data);
   size++;
 }
 
@@ -48,10 +48,10 @@ template <class T>
 T GenQueue<T>::remove() {
   if(size < 1) {
     cout << "Queue empty." << endl;
-    return;
+    return 0;
   }
   else {
-    return myQueue.removeFront();
+    return myQueue->removeFront();
     size--;
   }
 }
@@ -60,10 +60,10 @@ template <class T>
 T GenQueue<T>::peek() {
   if(size < 1) {
     cout << "Queue empty." << endl;
-    return;
+    return 0;
   }
   else {
-    return myQueue.getFront();
+    return myQueue->getFront().data;
   }
 }
 
