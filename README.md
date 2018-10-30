@@ -1,6 +1,9 @@
 # assignment4
 ## Registrar
 
+atom://teletype/portal/9d6c117f-e0a3-4226-ace0-5b4e514da857
+
+
 Tristan Chilvers
 2288893
 chilvers@chapman.edu
