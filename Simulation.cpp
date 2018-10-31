@@ -17,28 +17,14 @@ Simulation() {
 
 }
 
-void init(ifstream& file) {
+void init(string filePath) {
+
   GenQueue<Student> line;
   GenDoublyLL<Student> studentList;
   int tick;
   string line;
   int numWindows;
 
-  if(getline(file,line)) { //read first line
-    numWindows = stoi(line);
-  }
-  else {
-    //empty file
-    cerr << "File empty." << endl;
-    exit(EXIT_FAILURE);
-  }
+  FileIO io(filePath);
 
-  //read successive lines
-  while(getline(file,line)) {
-    for(int i = 0; i < stoi(line); i++) {
-      string tempLine;
-      getline(file,tempLine)
-      studentList.insertFront(new Student(stoi(tempLine)))
-    }
-  }
 }
