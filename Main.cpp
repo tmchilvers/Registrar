@@ -1,9 +1,11 @@
-#include "GenQueue.h"
-#include "GenDoublyLL.h"
-#include "SimStats.h"
-#include "Simulation.h"
-#include "Student.h"
-#include "Window.h"
+// #include "GenQueue.h"
+// #include "GenDoublyLL.h"
+// #include "SimStats.h"
+// #include "Simulation.h"
+// #include "Student.h"
+// #include "Window.h"
+#include "FileIO.h"
+#include <fstream>
 #include <iostream>
 
 using namespace std;
@@ -18,14 +20,12 @@ int main(int argc, char **argv) {
     filePath = argv[1];
   }
 
-
-  //testing
-  GenQueue<int> q;
-  q.insert(5);
-  cout << q.peek() << endl;
-  q.insert(4);
-  q.insert(10);
-  while(!q.isEmpty()) {
-    cout << q.remove() << endl;
+    FileIO fileIO(argv[1]);
+    ifstream& inFile = fileIO.getInFile();
+    ofstream& outFile = fileIO.getOutFile();
+    cout << fileIO.countLines() << endl;
+    cout << fileIO.countLines() << endl;
+    cout << fileIO.countLines() << endl;
+        cout << fileIO.countLines() << endl;
+            cout << fileIO.countLines() << endl;
   }
-}

@@ -35,6 +35,7 @@ class FileIO
     int countLines(); //count number of lines in input file
 
   private:
+    string inFilePath;
     ifstream inputFile;
     ofstream outputFile;
 };

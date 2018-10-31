@@ -18,12 +18,13 @@ FileIO::FileIO()
 
 FileIO::FileIO(string filePath) //open a file at requested path, ask if output file will be created
 {
+  inFilePath = filePath;
   try //try to open file, throw error if impossible
   {
     inputFile.open(filePath);
     if(!inputFile.is_open())
     {
-     throw invalid_argument("Second argument must be a readable file type and/or exist in directory.\n"); //exception for incorrect file type
+     throw invalid_argument("Argument must be a readable file type and/or exist in directory.\n"); //exception for incorrect file type
     }
   }
 
@@ -71,17 +72,23 @@ void FileIO::printFile()
     }
     cout << endl;
   }
+  inputFile.close();
+  inputFile.open(inFilePath);
 }
 
 int FileIO::countLines()
 {
   int lines = 0;
+  string line;
   while(getline(inputFile, line))
   {
-    line++;
+    lines++;
   }
 
-  return line;
+  inputFile.close();
+  inputFile.open(inFilePath);
+
+  return lines;
 }
 
 bool FileIO::checkOpen()
