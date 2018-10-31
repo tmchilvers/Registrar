@@ -73,6 +73,17 @@ void FileIO::printFile()
   }
 }
 
+int FileIO::countLines()
+{
+  int lines = 0;
+  while(getline(inputFile, line))
+  {
+    line++;
+  }
+
+  return line;
+}
+
 bool FileIO::checkOpen()
 {
   return inputFile.is_open();

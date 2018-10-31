@@ -32,6 +32,8 @@ class FileIO
     ifstream& getInFile(); //reference allows ability to get the file stream
     ofstream& getOutFile();
 
+    int countLines(); //count number of lines in input file
+
   private:
     ifstream inputFile;
     ofstream outputFile;
