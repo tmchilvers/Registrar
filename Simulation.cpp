@@ -4,35 +4,38 @@
 #include "Simulation.h"
 #include "Student.h"
 #include "Window.h"
+#include "FileIO.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-Simulation() {
+Simulation::Simulation() {
 
 }
-~Simulation() {
+Simulation::~Simulation() {
 
 }
 
-void init(string filePath) {
+void Simulation::init(string filePath) {
 
-  GenQueue<Student> line;
+  GenQueue<Student> studentLine;
   GenDoublyLL<Student> studentList;
   int tick;
   string line;
   int numWindows;
 
   FileIO io(filePath);
-  int parsedFile[io.countLines()];
+  int numLines = io.countLines();
+  int parsedFile[numLines];
 
   ifstream& inFile = io.getInFile();
 
   int count = 0;
-  while(getline(inFile, line)) {
+  while(getline(inFile, line) && count < numLines)
+  {
+    cout << count << endl;
     parsedFile[count++] = stoi(line);
   }
-
 }

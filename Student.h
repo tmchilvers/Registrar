@@ -14,7 +14,7 @@ class Student {
 public:
   Student();
   Student(int qL);
-  Student(Student other);
+  Student(Student& other);
   ~Student();
 
   int getWaitTime();

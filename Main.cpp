@@ -1,9 +1,9 @@
-// #include "GenQueue.h"
-// #include "GenDoublyLL.h"
-// #include "SimStats.h"
-// #include "Simulation.h"
-// #include "Student.h"
-// #include "Window.h"
+#include "GenQueue.h"
+#include "GenDoublyLL.h"
+#include "SimStats.h"
+#include "Simulation.h"
+#include "Student.h"
+#include "Window.h"
 #include "FileIO.h"
 #include <fstream>
 #include <iostream>
@@ -20,8 +20,8 @@ int main(int argc, char **argv) {
     filePath = argv[1];
   }
 
-    FileIO fileIO(argv[1]);
-    ifstream& inFile = fileIO.getInFile();
-    ofstream& outFile = fileIO.getOutFile();
-    cout << fileIO.countLines() << endl;
-  }
+  Simulation simulation;
+  simulation.init(argv[1]);
+
+  return 0;
+}

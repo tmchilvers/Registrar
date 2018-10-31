@@ -16,7 +16,7 @@ public:
   Simulation();
   ~Simulation();
 
-  void init();
+  void init(string filePath);
 
 private:
 
