@@ -24,8 +24,4 @@ int main(int argc, char **argv) {
     ifstream& inFile = fileIO.getInFile();
     ofstream& outFile = fileIO.getOutFile();
     cout << fileIO.countLines() << endl;
-    cout << fileIO.countLines() << endl;
-    cout << fileIO.countLines() << endl;
-        cout << fileIO.countLines() << endl;
-            cout << fileIO.countLines() << endl;
   }
