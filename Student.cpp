@@ -12,6 +12,14 @@ Student::Student() {
   waitTime = 0;
   qLength = 0;
 }
+Student::Student(int qL) {
+  waitTime = 0;
+  qLength = qL;
+}
+Student::Student(Student other) {
+  waitTime = other.getWaitTime();
+  qLength = other.getQLength();
+}
 Student::~Student() {
 
 }

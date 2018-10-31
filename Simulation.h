@@ -16,6 +16,8 @@ public:
   Simulation();
   ~Simulation();
 
+  void init();
+
 private:
 
 };

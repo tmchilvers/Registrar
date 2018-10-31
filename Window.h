@@ -18,8 +18,14 @@ public:
 
   Student getStudent();
   void setStudent(Student& s);
+  Student* clearStudent();
+  bool hasStudent();
+
+  int getCurrQTime();
+  void setCurrQTime(int t);
 private:
   Student *currStudent;
+  int currQTime;
 };
 
 #endif
