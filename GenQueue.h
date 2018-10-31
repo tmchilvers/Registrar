@@ -41,6 +41,7 @@ GenQueue<T>::~GenQueue() {
 template <class T>
 void GenQueue<T>::insert(const T& data) {
   myQueue->insertBack(data);
+  cout << "inserting: " << data << endl;
   size++;
 }
 
@@ -48,7 +49,7 @@ template <class T>
 T GenQueue<T>::remove() {
   if(size < 1) {
     cout << "Queue empty." << endl;
-    return 0;
+    exit(EXIT_FAILURE);
   }
   else {
     return myQueue->removeFront();
@@ -60,9 +61,10 @@ template <class T>
 T GenQueue<T>::peek() {
   if(size < 1) {
     cout << "Queue empty." << endl;
-    return 0;
+    exit(EXIT_FAILURE);
   }
   else {
+    cout << "Peeking: " << myQueue->getFront()->data << endl;
     return myQueue->getFront()->data;
   }
 }
@@ -76,5 +78,6 @@ template <class T>
 int GenQueue<T>::getSize() {
   return size;
 }
+
 
 #endif

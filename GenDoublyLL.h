@@ -99,7 +99,7 @@ void GenDoublyLL<T>::insertFront(T d)
 template <class T>
 void GenDoublyLL<T>::insertBack(T d)
 {
-  ListNode<T> *node = new ListNode<T>();
+  ListNode<T> *node = new ListNode<T>(d);
    if (size == 0) {
      front = node;
    }
@@ -119,8 +119,8 @@ T GenDoublyLL<T>::removeFront()
 
   if(size == 0)
   {
-    cerr << "Nothing to remove" << endl;
-    return 0;
+    cerr << "Nothing to remove from Front" << endl;
+    exit(EXIT_FAILURE);
   }
 
   else if (front->next == NULL) { //only node in ListNode<T>;
@@ -148,17 +148,17 @@ T GenDoublyLL<T>::removeBack()
   if(size == 0)
   {
     cerr << "Nothing to remove" << endl;
-    return 0;
+    exit(EXIT_FAILURE);
   }
 
-  else if (front->next == NULL)
+  else if (front->next == NULL) //only one element
   {
-    back = NULL;
+    front = NULL;
   }
 
   else
   {
-    front->next->prev = NULL;
+    back->prev->next = NULL;
   }
   back = back->prev;
   temp->prev = NULL;
