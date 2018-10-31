@@ -26,5 +26,13 @@ void init(string filePath) {
   int numWindows;
 
   FileIO io(filePath);
+  int parsedFile[io.countLines()];
+
+  ifstream& inFile = io.getInFile();
+
+  int count = 0;
+  while(getline(inFile, line)) {
+    parsedFile[count++] = stoi(line);
+  }
 
 }
