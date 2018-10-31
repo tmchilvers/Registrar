@@ -35,7 +35,6 @@ void Simulation::init(string filePath) {
   int count = 0;
   while(getline(inFile, line) && count < numLines)
   {
-    cout << count << endl;
     parsedFile[count++] = stoi(line);
   }
 }
