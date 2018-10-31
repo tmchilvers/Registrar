@@ -35,19 +35,19 @@ FileIO::FileIO(string filePath) //open a file at requested path, ask if output f
     exit(1);
   }
 
-  char ans; //ask if output file will be created
-  do {
-    cout << "Would you like to create a output file? ('y'|'n'):";
-    cin >> ans;
-  } while(ans != 'y' && ans != 'Y' && ans != 'n' && ans != 'N');
-
-  if(ans == 'y' || ans == 'Y') //create output file
-  {
-    string outName;
-    cout << "What would you like to call the output file? (Be wary of characters your OS does not allow for file names): ";
-    cin >> outName;
-    outputFile.open(outName);
-  }
+  // char ans; //ask if output file will be created
+  // do {
+  //   cout << "Would you like to create a output file? ('y'|'n'):";
+  //   cin >> ans;
+  // } while(ans != 'y' && ans != 'Y' && ans != 'n' && ans != 'N');
+  //
+  // if(ans == 'y' || ans == 'Y') //create output file
+  // {
+  //   string outName;
+  //   cout << "What would you like to call the output file? (Be wary of characters your OS does not allow for file names): ";
+  //   cin >> outName;
+  //   outputFile.open(outName);
+  // }
 }
 
 FileIO::~FileIO() //close files
