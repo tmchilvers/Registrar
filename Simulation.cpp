@@ -71,15 +71,9 @@ void Simulation::init(string filePath) {
     //check if any windows are full
     for(int i = 0; i < numWindows; i++) {
       if(windowArray[i].hasStudent()) { //if window is full, check if student has finished question
-        //cout << windowArray[i].hasStudent() << endl;
 
         int questionLength = windowArray[i].getStudent()->getQLength();
-        //Student* test = windowArray[i].getStudent();
-        //Student* test = new Student(10,10);
-        //cout << test->getQLength() << endl;
-        //int questionLength = 5;
         int currentTime = windowArray[i].getCurrQTime();
-        //int currentTime = 5;
 
         if(questionLength == currentTime) {
           //for now students are simply deleted, but should be moved to a "finished" pile for stats
