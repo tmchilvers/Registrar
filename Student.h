@@ -13,7 +13,7 @@ using namespace std;
 class Student {
 public:
   Student();
-  Student(int qL);
+  Student(int qL, int wT);
   Student(Student& other);
   ~Student();
 

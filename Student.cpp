@@ -12,8 +12,8 @@ Student::Student() {
   waitTime = 0;
   qLength = 0;
 }
-Student::Student(int qL) {
-  waitTime = 0;
+Student::Student(int qL, int wT) {
+  waitTime = wT;
   qLength = qL;
 }
 Student::Student(Student& other) {
@@ -21,7 +21,6 @@ Student::Student(Student& other) {
   qLength = other.getQLength();
 }
 Student::~Student() {
-
 }
 
 int Student::getWaitTime() {

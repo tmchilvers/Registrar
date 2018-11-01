@@ -7,10 +7,10 @@ class ListNode
 {
     public:
       ListNode();
-      ListNode(T d);
+      ListNode(T* d);
       ~ListNode();
 
-      T data;
+      T* data;
       ListNode<T> *next;
       ListNode<T> *prev;
 };
@@ -23,7 +23,7 @@ ListNode<T>::ListNode()
 }
 
 template <class T>
-ListNode<T>::ListNode(T d)
+ListNode<T>::ListNode(T* d)
 {
   data = d;
   next = nullptr; //nullptr

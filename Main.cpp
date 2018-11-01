@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
     filePath = argv[1];
   }
 
+
   Simulation simulation;
   simulation.init(filePath);
   cout << "end of file" << endl;

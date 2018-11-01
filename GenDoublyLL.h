@@ -39,8 +39,8 @@ class GenDoublyLL //: public IDoubleLinkedList
     ~GenDoublyLL();
 
     void insertFront(T);
-    void insertBack(T);
-    T removeFront();
+    void insertBack(T*);
+    T* removeFront();
     T removeBack();
     ListNode<T> *remove(T key);
 
@@ -97,7 +97,7 @@ void GenDoublyLL<T>::insertFront(T d)
 }
 
 template <class T>
-void GenDoublyLL<T>::insertBack(T d)
+void GenDoublyLL<T>::insertBack(T* d)
 {
   ListNode<T> *node = new ListNode<T>(d);
    if (size == 0) {
@@ -113,7 +113,7 @@ void GenDoublyLL<T>::insertBack(T d)
 }
 
 template <class T>
-T GenDoublyLL<T>::removeFront()
+T* GenDoublyLL<T>::removeFront()
 {
   ListNode<T> *temp = front;
 
@@ -134,7 +134,7 @@ T GenDoublyLL<T>::removeFront()
   front = front->next;
   temp->next = NULL;
 
-  T data = temp->data;
+  T* data = temp->data;
 
   delete temp;
   size--;
