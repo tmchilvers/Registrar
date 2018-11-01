@@ -20,18 +20,19 @@ Student* Window::getStudent() {
   return currStudent;
 }
 
-void Window::setStudent(Student& s) {
-  currStudent = &s;
+void Window::setStudent(Student* s) {
+  currStudent = s;
 }
 
 Student* Window::clearStudent() {
   Student* temp(currStudent);
   currStudent = NULL;
+  currQTime = 0;
   return temp;
 }
 
 bool Window::hasStudent() {
-  return currStudent == NULL;
+  return currStudent != NULL;
 }
 
 int Window::getCurrQTime() {

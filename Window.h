@@ -17,7 +17,7 @@ public:
   ~Window();
 
   Student* getStudent();
-  void setStudent(Student& s);
+  void setStudent(Student* s);
   Student* clearStudent();
   bool hasStudent();
 

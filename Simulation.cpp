@@ -22,7 +22,6 @@ cout << "DESTRUCTOR" << endl;
 void Simulation::init(string filePath) {
   GenQueue<Student> studentLine;
   //GenDoublyLL<Student> studentList;
-  int tick;
   string line;
   int numWindows;
 
@@ -59,5 +58,38 @@ void Simulation::init(string filePath) {
     studentLine.remove();
   }*/
 
-  cout << "num of windows: " << numWindows << endl;
+  //cout << "num of windows: " << numWindows << endl;
+
+  // File Reading Complete =====================================================
+  //Simulation begins here
+
+  Window windowArray[numWindows];
+  int time = 0;
+  while(!studentLine.isEmpty()) { //main loop
+    //increment current question time for active windows
+
+    //check if any windows are full
+    for(int i = 0; i < numWindows; i++) {
+      if(windowArray[i].hasStudent()) { //if window is full, check if student has finished question
+        //cout << windowArray[i].hasStudent() << endl;
+
+        int questionLength = windowArray[i].getStudent()->getQLength();
+        //Student* test = windowArray[i].getStudent();
+        //Student* test = new Student(10,10);
+        //cout << test->getQLength() << endl;
+        //int questionLength = 5;
+        int currentTime = windowArray[i].getCurrQTime();
+        //int currentTime = 5;
+
+        if(questionLength == currentTime) {
+          //for now students are simply deleted, but should be moved to a "finished" pile for stats
+          windowArray[i].clearStudent(); //if student has finished question, remove student from window
+        }
+      }
+    }
+
+    //check if any windows are empty
+    //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
+
+  }
 }
