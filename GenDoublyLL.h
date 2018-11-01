@@ -2,33 +2,13 @@
 #define GENDOUBLYLL_H
 
 #include "ListNode.h"
-#include "IDoublyLinkedList.h"
 #include <iostream>
 
 using namespace std;
 
-// class IDoublyLinkedList
-// {
-//   public:
-//     virtual void insertFront(int d) = 0;
-//     virtual void removeBack(int d) = 0;
-//     virtual int removeFront() = 0;
-//     virtual int removeBack() = 0;
-//     virtual ListNode *remove(int key) = 0;
-//
-//     virtual int deletePos(int pos) = 0;
-//     virtual int find(int value) = 0;
-//
-//     virtual void printList() = 0;
-//     virtual unsigned int getSize() = 0;
-// };
-
-
-
-
 //template class================================================================
 template <class T>
-class GenDoublyLL //: public IDoublyLinkedList
+class GenDoublyLL
 {
   private:
     ListNode<T> *front;

@@ -63,21 +63,23 @@ void Simulation::init(string filePath) {
   // File Reading Complete =====================================================
   //Simulation begins here
 
+
   Window windowArray[numWindows];
   int time = 0;
-  while(!studentLine.isEmpty()) { //main loop
+  while(true) { //main loop
+
   //  cout << time << endl;
 
-  //Iterate through student list to put them into Queue
-  ListNode<Student> *curr = studentList.getFront();
-  while(curr != NULL)
-  {
-    if(time == curr->data->arrivalTime)
+    //Iterate through student list to put them into Queue
+    ListNode<Student> *curr = studentList.getFront();
+    while(curr != NULL)
     {
-      studentLine.insert(curr->data);
+      if(time == curr->data->arrivalTime)
+      {
+        studentLine.insert(curr->data);
+      }
+      curr = curr->next;
     }
-    curr = curr->next;
-  }
 
     //time++;
     //increment current question time for active windows
@@ -94,6 +96,7 @@ void Simulation::init(string filePath) {
         }
       }
     }
+
 
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
@@ -122,6 +125,7 @@ void Simulation::init(string filePath) {
         }
       }
     }
+
 
     time++;
     for(int i = 0; i < numWindows; i++)
