@@ -53,7 +53,7 @@ FileIO::FileIO(string filePath) //open a file at requested path, ask if output f
 FileIO::~FileIO() //close files
 {
   inputFile.close();
-  //outputFile.close();
+  outputFile.close();
 }
 
 //auxiliary functions===========================================================

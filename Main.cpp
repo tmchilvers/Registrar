@@ -21,7 +21,8 @@ int main(int argc, char **argv) {
   }
 
   Simulation simulation;
-  simulation.init(argv[1]);
+  simulation.init(filePath);
+  cout << "end of file" << endl;
 
   return 0;
 }
