@@ -71,21 +71,13 @@ void Simulation::init(string filePath) {
   Window windowArray[numWindows];
   int time = 0;
   while(true) { //main loop
-<<<<<<< HEAD
-
-=======
->>>>>>> de9ab9a0af8fcbd4fa0e54af9e9fab3f9f8e9606
   //  cout << time << endl;
   if(studentLine.isEmpty()) {
     if(studentList.getSize() == 0){
       break;
     }
   }
-<<<<<<< HEAD
-
-=======
     //studentList.printList();
->>>>>>> d4b57ffba603ea767d93c82ad53bd9ee963ad993
     //Iterate through student list to put them into Queue
     ListNode<Student> *curr = studentList.getFront();
     while(curr != NULL)
