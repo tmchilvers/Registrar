@@ -21,7 +21,7 @@ cout << "DESTRUCTOR" << endl;
 
 void Simulation::init(string filePath) {
   GenQueue<Student> studentLine;
-  //GenDoublyLL<Student> studentList;
+  GenDoublyLL<Student> studentList;
   string line;
   int numWindows;
 
@@ -37,7 +37,7 @@ void Simulation::init(string filePath) {
     parsedFile[count++] = stoi(line); //array is filled with lines from files as ints
   }
 
-  int atTime = 0; //the time that students arrive
+  int atTime; //the time that students arrive
 
   numWindows = parsedFile[0];
   for(int i = 1; i < numLines; i++) //populating the queue with students
@@ -46,7 +46,7 @@ void Simulation::init(string filePath) {
     int arrivalTime = parsedFile[i]; //first line indicates arrival time
     int numStudents = parsedFile[i+1]; //second line indicates how many students
     for(int j = 0; j < numStudents; j++) { //adding students to Queue
-      studentLine.insert(new Student((parsedFile[(i+2)+j]),(0-arrivalTime)));
+      studentList.insertBack(new Student((parsedFile[(i+2)+j]), 0, arrivalTime));
     }
     i += (1 + numStudents);
 
@@ -66,10 +66,21 @@ void Simulation::init(string filePath) {
   Window windowArray[numWindows];
   int time = 0;
   while(!studentLine.isEmpty()) { //main loop
-    cout << time << endl;
+  //  cout << time << endl;
+
+  //Iterate through student list to put them into Queue
+  ListNode<Student> *curr = studentList.getFront();
+  while(curr != NULL)
+  {
+    if(time == curr->data->arrivalTime)
+    {
+      studentLine.insert(curr->data);
+    }
+    curr = curr->next;
+  }
+
     //time++;
     //increment current question time for active windows
-
     //check if any windows are full
     for(int i = 0; i < numWindows; i++) {
       if(windowArray[i].hasStudent()) { //if window is full, check if student has finished question
@@ -81,18 +92,19 @@ void Simulation::init(string filePath) {
           //for now students are simply deleted, but should be moved to a "finished" pile for stats
           windowArray[i].clearStudent(); //if student has finished question, remove student from window
         }
-        else {
-          windowArray[i].setCurrQTime(windowArray[i].getCurrQTime()+1);
-        }
       }
     }
 
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
+
       if(!windowArray[i].hasStudent()) {
         if(!studentLine.isEmpty()) {
           if(studentLine.peek()->getWaitTime() >= 0) {
+                    cout << "HERE" << endl;
+
+            cout << "WAITTIME: " << studentLine.peek()->getWaitTime() << endl;
             windowArray[i].setStudent(studentLine.remove());
 
             //setting wait time correctly
@@ -112,6 +124,17 @@ void Simulation::init(string filePath) {
     }
 
     time++;
-  }
+    for(int i = 0; i < numWindows; i++)
+    {
+      if(!windowArray[i].hasStudent())
+      {
+        windowArray[i].incrementIdleTime();
+      }
 
+      else if(windowArray[i].hasStudent())
+      {
+        windowArray[i].incrementCurrQTime();
+      }
+    }
+  }
 }

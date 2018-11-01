@@ -43,6 +43,16 @@ void Window::setCurrQTime(int t) {
   currQTime = t;
 }
 
+void Window::incrementCurrQTime()
+{
+  currQTime++;
+}
+
+void Window::incrementIdleTime()
+{
+  idleTime++;
+}
+
 void Window::resetIdleTime()
 {
   idleTime = 0;

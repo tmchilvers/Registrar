@@ -23,9 +23,11 @@ public:
 
   int getCurrQTime();
   void setCurrQTime(int t);
+  void incrementCurrQTime();
 
   int idleTime;
   void resetIdleTime();
+  void incrementIdleTime();
 
 private:
   Student *currStudent;

@@ -17,11 +17,14 @@ public:
 
   bool isEmpty();
   int getSize();
+
+  GenDoublyLL<T> *myQueue;
+
 private:
   //ListNode<T> *front;
   //ListeNode<T> *back;
   int size;
-  GenDoublyLL<T> *myQueue;
+
 };
 
 //Template Functions============================================================

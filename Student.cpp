@@ -12,9 +12,10 @@ Student::Student() {
   waitTime = 0;
   qLength = 0;
 }
-Student::Student(int qL, int wT) {
+Student::Student(int qL, int wT, int aT) {
   waitTime = wT;
   qLength = qL;
+  arrivalTime = aT;
 }
 Student::Student(Student& other) {
   waitTime = other.getWaitTime();
@@ -28,6 +29,11 @@ int Student::getWaitTime() {
 }
 void Student::setWaitTime(int t) {
   waitTime = t;
+}
+
+void Student::incrementWaitTime()
+{
+  waitTime++;
 }
 
 int Student::getQLength() {
