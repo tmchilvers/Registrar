@@ -66,6 +66,7 @@ void Simulation::init(string filePath) {
   Window windowArray[numWindows];
   int time = 0;
   while(!studentLine.isEmpty()) { //main loop
+    //time++;
     //increment current question time for active windows
 
     //check if any windows are full
@@ -83,7 +84,27 @@ void Simulation::init(string filePath) {
     }
 
     //check if any windows are empty
-    //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
+    for(int i = 0; i < numWindows; i++) {
+        //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
+      if(!windowArray[i].hasStudent()) {
+        if(!studentLine.isEmpty()) {
+          windowArray[i].setStudent(studentLine.remove());
+
+          //setting wait time correctly
+          if(windowArray[i].getStudent()->getWaitTime() < 0) {
+            windowArray[i].getStudent()->setWaitTime(0);
+          }
+          else {
+            windowArray[i].getStudent()->setWaitTime(windowArray[i].getStudent()->getWaitTime()+time);
+          }
+
+          cout << "Filled window " << i << " with student." << endl;
+          cout << "Student waited " << windowArray[i].getStudent()->getWaitTime() << " minutes." << endl;
+        }
+      }
+    }
+
 
   }
+
 }
