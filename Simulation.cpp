@@ -47,6 +47,10 @@ void Simulation::init(string filePath) {
     int numStudents = parsedFile[i+1]; //second line indicates how many students
     for(int j = 0; j < numStudents; j++) { //adding students to Queue
       studentList.insertBack(new Student((parsedFile[(i+2)+j]), 0, arrivalTime));
+      cout << "Student added. Arrival time: " << arrivalTime <<
+      " and question length: " << parsedFile[(i+2)+j] << endl;
+      cout << "printing list:" << endl;
+      studentList.printList();
     }
     i += (1 + numStudents);
 
@@ -77,7 +81,11 @@ void Simulation::init(string filePath) {
       break;
     }
   }
+<<<<<<< HEAD
 
+=======
+    //studentList.printList();
+>>>>>>> d4b57ffba603ea767d93c82ad53bd9ee963ad993
     //Iterate through student list to put them into Queue
     ListNode<Student> *curr = studentList.getFront();
     while(curr != NULL)
@@ -113,7 +121,6 @@ void Simulation::init(string filePath) {
       if(!windowArray[i].hasStudent()) {
         if(!studentLine.isEmpty()) {
           if(studentLine.peek()->getWaitTime() >= 0) {
-                    cout << "HERE" << endl;
 
             cout << "WAITTIME: " << studentLine.peek()->getWaitTime() << endl;
             windowArray[i].setStudent(studentLine.remove());
