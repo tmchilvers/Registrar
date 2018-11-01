@@ -15,6 +15,9 @@ public:
   SimStats();
   ~SimStats();
 
+  double meanStudent();
+  double medianStudent();
+
 private:
 
 };

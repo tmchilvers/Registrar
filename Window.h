@@ -23,6 +23,10 @@ public:
 
   int getCurrQTime();
   void setCurrQTime(int t);
+
+  int idleTime;
+  void resetIdleTime();
+
 private:
   Student *currStudent;
   int currQTime;

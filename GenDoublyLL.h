@@ -2,6 +2,7 @@
 #define GENDOUBLYLL_H
 
 #include "ListNode.h"
+#include "IDoublyLinkedList.h"
 #include <iostream>
 
 using namespace std;
@@ -27,7 +28,7 @@ using namespace std;
 
 //template class================================================================
 template <class T>
-class GenDoublyLL //: public IDoubleLinkedList
+class GenDoublyLL //: public IDoublyLinkedList
 {
   private:
     ListNode<T> *front;

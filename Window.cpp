@@ -11,6 +11,7 @@ using namespace std;
 Window::Window() {
   currStudent = NULL;
   currQTime = 0;
+  idleTime = 0;
 }
 Window::~Window() {
   clearStudent();
@@ -40,4 +41,9 @@ int Window::getCurrQTime() {
 }
 void Window::setCurrQTime(int t) {
   currQTime = t;
+}
+
+void Window::resetIdleTime()
+{
+  idleTime = 0;
 }
