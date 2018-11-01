@@ -21,7 +21,7 @@ cout << "DESTRUCTOR" << endl;
 
 void Simulation::init(string filePath) {
   GenQueue<Student> studentLine;
-  GenDoublyLL<Student> studentList;
+  //GenDoublyLL<Student> studentList;
   int tick;
   string line;
   int numWindows;
@@ -41,7 +41,7 @@ void Simulation::init(string filePath) {
   int atTime = 0; //the time that students arrive
 
   numWindows = parsedFile[0];
-  for(int i = 1; i < numLines; i++)
+  for(int i = 1; i < numLines; i++) //populating the queue with students
   {
     //at what time
     int arrivalTime = parsedFile[i]; //first line indicates arrival time
@@ -59,5 +59,5 @@ void Simulation::init(string filePath) {
     studentLine.remove();
   }*/
 
-  cout << "num: " << numWindows << endl;
+  cout << "num of windows: " << numWindows << endl;
 }
