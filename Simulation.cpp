@@ -80,31 +80,38 @@ void Simulation::init(string filePath) {
           //for now students are simply deleted, but should be moved to a "finished" pile for stats
           windowArray[i].clearStudent(); //if student has finished question, remove student from window
         }
+        else {
+          windowArray[i].setCurrQTime(windowArray[i].getCurrQTime()+1);
+        }
       }
     }
 
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
+      cout << time << endl;
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
       if(!windowArray[i].hasStudent()) {
         if(!studentLine.isEmpty()) {
-          windowArray[i].setStudent(studentLine.remove());
+          if(studentLine.peek()->getWaitTime() >= 0) {
+            windowArray[i].setStudent(studentLine.remove());
 
-          //setting wait time correctly
-          if(windowArray[i].getStudent()->getWaitTime() < 0) {
-            windowArray[i].getStudent()->setWaitTime(0);
-          }
-          else {
-            windowArray[i].getStudent()->setWaitTime(windowArray[i].getStudent()->getWaitTime()+time);
+            //setting wait time correctly
+            if(windowArray[i].getStudent()->getWaitTime() < 0) {
+              windowArray[i].getStudent()->setWaitTime(0);
+            }
+            else {
+              windowArray[i].getStudent()->setWaitTime(windowArray[i].getStudent()->getWaitTime()+time);
+            }
+
+            cout << "Filled window " << i << " with student." << endl;
+            cout << "Student waited " << windowArray[i].getStudent()->getWaitTime() << " minutes." << endl;
           }
 
-          cout << "Filled window " << i << " with student." << endl;
-          cout << "Student waited " << windowArray[i].getStudent()->getWaitTime() << " minutes." << endl;
         }
       }
     }
 
-
+    time++;
   }
 
 }
