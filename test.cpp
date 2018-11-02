@@ -11,11 +11,14 @@ int main(int argc, char const *argv[]) {
   gen.insert(new int(7));
   gen.insert(new int(8));
 
-  cout << gen.getSize() << endl;
 
-  cout << *gen.remove() << endl;
-  cout << *gen.peek() << endl;
-  cout << gen.getSize() << endl;
+    cout << *gen.remove() << endl;
+      cout << *gen.remove() << endl;
+        cout << *gen.remove() << endl;
+          cout << *gen.remove() << endl;
+
+
+            cout << gen.getSize() << endl;
 
 
   return 0;

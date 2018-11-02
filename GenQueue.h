@@ -25,7 +25,7 @@ public:
 private:
   //ListNode<T> *front;
   //ListeNode<T> *back;
-  unsigned int size;
+  int size;
 
 };
 
@@ -40,7 +40,7 @@ GenQueue<T>::GenQueue() {
 
 template <class T>
 GenQueue<T>::~GenQueue() {
-  delete myQueue;
+
 }
 
 template <class T>
