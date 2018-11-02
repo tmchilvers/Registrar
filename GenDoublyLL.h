@@ -2,7 +2,6 @@
 #define GENDOUBLYLL_H
 
 #include "ListNode.h"
-#include "IDoublyLinkedList.h"
 #include <iostream>
 
 using namespace std;
