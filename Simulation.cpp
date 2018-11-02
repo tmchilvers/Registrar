@@ -49,8 +49,8 @@ void Simulation::init(string filePath) {
       studentList.insertBack(new Student((parsedFile[(i+2)+j]), 0, arrivalTime));
       cout << "Student added. Arrival time: " << arrivalTime <<
       " and question length: " << parsedFile[(i+2)+j] << endl;
-      cout << "printing list:" << endl;
-      studentList.printList();
+      //cout << "printing list:" << endl;
+      //studentList.printList();
     }
     i += (1 + numStudents);
 
@@ -66,24 +66,28 @@ void Simulation::init(string filePath) {
 
   // File Reading Complete =====================================================
   //Simulation begins here
-
+  cout << "printing list" << endl;
+  studentList.printList();
   Window windowArray[numWindows];
   int time = 0;
   while(true) { //main loop
-  //  cout << time << endl;
+  cout << "TIME: " << time << endl << endl;
   if(studentLine.isEmpty()) {
     if(studentList.getSize() == 0){
       break;
     }
   }
-    //studentList.printList();
+    cout << "print list: " << endl;
+    studentList.printList();
     //Iterate through student list to put them into Queue
     ListNode<Student> *curr = studentList.getFront();
     while(curr != NULL)
     {
+      cout << curr->data->arrivalTime << endl;
       if(time == curr->data->arrivalTime)
       {
         studentLine.insert(curr->data);
+        cout << "student added to queue" << endl;
       }
       curr = curr->next;
     }
@@ -109,29 +113,31 @@ void Simulation::init(string filePath) {
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
 
       if(!windowArray[i].hasStudent()) {
+
         if(!studentLine.isEmpty()) {
-          if(studentLine.peek()->getWaitTime() >= 0) {
+          cout << "something" << endl;
+          cout << "queue size: " << studentLine.getSize() << endl;
+          studentLine.printQueue();
+          cout << "WAITTIME: " << studentLine.peek()->getWaitTime() << endl;
+          windowArray[i].setStudent(studentLine.remove());
+          cout << "Student removed from queue." << endl;
 
-            cout << "WAITTIME: " << studentLine.peek()->getWaitTime() << endl;
-            windowArray[i].setStudent(studentLine.remove());
+          //setting wait time correctly
+          /*if(windowArray[i].getStudent()->getWaitTime() < 0) {
+            windowArray[i].getStudent()->setWaitTime(0);
+          }*/
 
-            //setting wait time correctly
-            if(windowArray[i].getStudent()->getWaitTime() < 0) {
-              windowArray[i].getStudent()->setWaitTime(0);
-            }
-            else {
-              windowArray[i].getStudent()->setWaitTime(windowArray[i].getStudent()->getWaitTime()+time);
-            }
+          windowArray[i].getStudent()->setWaitTime(time - windowArray[i].getStudent()->arrivalTime);
 
-            cout << "Filled window " << i << " with student." << endl;
-            cout << "Student waited " << windowArray[i].getStudent()->getWaitTime() << " minutes." << endl;
-          }
-
+          cout << "Filled window " << i << " with student." << endl;
+          cout << "Student waited " << windowArray[i].getStudent()->getWaitTime() << " minutes." << endl;
+          cout << "stop 1" << endl;
         }
       }
     }
 
     time++;
+    cout << "stop 2" << endl;
     for(int i = 0; i < numWindows; i++)
     {
       if(!windowArray[i].hasStudent())

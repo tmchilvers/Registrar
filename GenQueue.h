@@ -18,12 +18,14 @@ public:
   bool isEmpty();
   int getSize();
 
+  void printQueue();
+
   GenDoublyLL<T> *myQueue;
 
 private:
   //ListNode<T> *front;
   //ListeNode<T> *back;
-  int size;
+  unsigned int size;
 
 };
 
@@ -55,8 +57,8 @@ T* GenQueue<T>::remove() {
     exit(EXIT_FAILURE);
   }
   else {
-    return myQueue->removeFront();
     size--;
+    return myQueue->removeFront();
   }
 }
 
@@ -80,6 +82,11 @@ bool GenQueue<T>::isEmpty() {
 template <class T>
 int GenQueue<T>::getSize() {
   return size;
+}
+
+template <class T>
+void GenQueue<T>::printQueue() {
+  myQueue->printList();
 }
 
 
