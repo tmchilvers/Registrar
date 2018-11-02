@@ -24,6 +24,7 @@ void Simulation::init(string filePath) {
   GenDoublyLL<Student> studentList;
   string line;
   int numWindows;
+  int totalStudents;
 
   FileIO io(filePath);
   int numLines = io.countLines();//how many lines are in file
@@ -45,6 +46,7 @@ void Simulation::init(string filePath) {
     //at what time
     int arrivalTime = parsedFile[i]; //first line indicates arrival time
     int numStudents = parsedFile[i+1]; //second line indicates how many students
+    totalStudents += numStudents;
     for(int j = 0; j < numStudents; j++) { //adding students to Queue
       studentList.insertBack(new Student((parsedFile[(i+2)+j]), 0, arrivalTime));
       cout << "Student added. Arrival time: " << arrivalTime <<
@@ -69,6 +71,8 @@ void Simulation::init(string filePath) {
   cout << "printing list" << endl;
   studentList.printList();
   Window windowArray[numWindows];
+  int studentWait[totalStudents];
+  int k = 0;
   int time = 0;
   //===========================================================================
   while(true) { //main loop
@@ -115,7 +119,7 @@ void Simulation::init(string filePath) {
 
         if(questionLength == currentTime) {
           //for now students are simply deleted, but should be moved to a "finished" pile for stats
-          windowArray[i].clearStudent(); //if student has finished question, remove student from window
+          studentWait[k++] = windowArray[i].clearStudent()->getWaitTime(); //if student has finished question, remove student from window
         }
       }
     }
@@ -152,6 +156,19 @@ void Simulation::init(string filePath) {
     }
 
 
+    if(studentLine.isEmpty() && studentList.isEmpty()) {
+      bool exit = true;
+      for(int i = 0; i < numWindows; i++) {
+        if(windowArray[i].hasStudent())
+        exit = false;
+      }
+      cout << "here" << endl;
+      if(exit)
+      {
+        break;
+      }
+    }
+
     time++;
     cout << "stop 2" << endl;
     for(int i = 0; i < numWindows; i++)
@@ -166,5 +183,22 @@ void Simulation::init(string filePath) {
         windowArray[i].incrementCurrQTime();
       }
     }
+  }
+// Calculate Stats ===========================================================
+
+//decrement all idle times
+/*for(int i = 0; i < numWindows; i++) {
+  windowArray[i].idleTime -= 1;
+}*/
+
+//print wait times
+  for(int i = 0; i < totalStudents; i++) {
+    cout << "Student " << i << " waited for " << studentWait[i] << " minutes" <<
+    endl;
+  }
+
+  for(int i = 0; i < numWindows; i++) {
+    cout << "Window " << i << " was idle for " << windowArray[i].idleTime <<
+    " minutes" << endl;
   }
 }
