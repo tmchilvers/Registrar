@@ -94,7 +94,6 @@ void Simulation::init(string filePath) {
       curr = curr->next;
     }
 
-    //time++;
     //increment current question time for active windows
     //check if any windows are full
     for(int i = 0; i < numWindows; i++) {

@@ -52,15 +52,12 @@ GenDoublyLL<T>::GenDoublyLL()
 template <class T>
 GenDoublyLL<T>::~GenDoublyLL()
 {
-  while(front->next != NULL)
+  while(front)
   {
-    ListNode<T> *curr = front;
-    front = curr->next;
-    front->prev = NULL;
-    curr->next = NULL;
-    delete curr;
+    ListNode<T> *node = front;
+    front = front->next;
+    delete node;
   }
-  delete front;
 }
 
 template <class T>
