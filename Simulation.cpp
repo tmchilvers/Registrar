@@ -108,6 +108,7 @@ void Simulation::init(string filePath) {
       }
     }
 
+
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
@@ -135,6 +136,7 @@ void Simulation::init(string filePath) {
         }
       }
     }
+
 
     time++;
     cout << "stop 2" << endl;
