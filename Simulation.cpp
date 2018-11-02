@@ -32,7 +32,17 @@ void Simulation::init(string filePath) {
   int count = 0;
   while(getline(inFile, line))
   {
-    parsedFile[count++] = stoi(line); //array is filled with lines from files as ints
+    try //catch incorrect data type in the inputted file
+    {
+      parsedFile[count++] = stoi(line); //array is filled with lines from files as ints
+    }
+
+    catch(std::invalid_argument e)
+    {
+      cerr << e.what() << endl;
+      cerr << "FATAL ERROR - Please have integers for data in text file\n";
+      exit(1);
+    }
   }
 
   int atTime; //the time that students arrive
