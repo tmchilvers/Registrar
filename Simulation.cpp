@@ -88,6 +88,9 @@ void Simulation::init(string filePath) {
       {
         studentLine.insert(curr->data);
         cout << "student added to queue" << endl;
+        curr = curr->next;
+        studentList.removeFront();
+        continue;
       }
       curr = curr->next;
     }
@@ -112,7 +115,9 @@ void Simulation::init(string filePath) {
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
-
+      if(time == 5) {
+        exit(EXIT_FAILURE);
+      }
       if(!windowArray[i].hasStudent()) {
 
         if(!studentLine.isEmpty()) {
