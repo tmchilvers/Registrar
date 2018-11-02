@@ -26,7 +26,6 @@ public:
   void incrementCurrQTime();
 
   int idleTime;
-  void resetIdleTime();
   void incrementIdleTime();
 
 private:

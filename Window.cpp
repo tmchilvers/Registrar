@@ -52,8 +52,3 @@ void Window::incrementIdleTime()
 {
   idleTime++;
 }
-
-void Window::resetIdleTime()
-{
-  idleTime = 0;
-}
