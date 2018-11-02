@@ -46,7 +46,6 @@ GenQueue<T>::~GenQueue() {
 template <class T>
 void GenQueue<T>::insert(T* data) {
   myQueue->insertBack(data);
-  //cout << "inserting: " << data << endl;
   size++;
 }
 
@@ -69,7 +68,6 @@ T* GenQueue<T>::peek() {
     exit(EXIT_FAILURE);
   }
   else {
-    //cout << "Peeking: " << myQueue->getFront()->data << endl;
     return myQueue->getFront()->data;
   }
 }

@@ -19,9 +19,6 @@ public:
   double calcMedian(int arr[], int arrLength);
   void swap(int *first, int *second);
   void bubbleSort(int arr[], int n);
-
-private:
-
 };
 
 #endif

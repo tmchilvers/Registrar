@@ -14,7 +14,6 @@ Simulation::Simulation() {
 }
 Simulation::~Simulation() {
 
-cout << "DESTRUCTOR" << endl;
 }
 
 void Simulation::init(string filePath) {
@@ -53,7 +52,6 @@ void Simulation::init(string filePath) {
 
   // File Reading Complete =====================================================
   //Simulation begins here
-  studentList.printList();
   Window windowArray[numWindows];
   int studentWait[totalStudents];
   int k = 0;
@@ -72,7 +70,6 @@ void Simulation::init(string filePath) {
     }
   }
 
-    studentList.printList();
     //Iterate through student list to put them into Queue
     ListNode<Student> *curr = studentList.getFront();
     while(curr != NULL)
@@ -107,7 +104,6 @@ void Simulation::init(string filePath) {
     for(int i = 0; i < numWindows; i++) {
       if(!windowArray[i].hasStudent()) {
         if(!studentLine.isEmpty()) {
-          studentLine.printQueue();
           windowArray[i].setStudent(studentLine.remove());
           windowArray[i].getStudent()->setWaitTime(time - windowArray[i].getStudent()->arrivalTime);
         }
