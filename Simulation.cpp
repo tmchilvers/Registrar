@@ -186,10 +186,6 @@ void Simulation::init(string filePath) {
   }
 // Calculate Stats ===========================================================
 
-//decrement all idle times
-/*for(int i = 0; i < numWindows; i++) {
-  windowArray[i].idleTime -= 1;
-}*/
 
 //print wait times
   for(int i = 0; i < totalStudents; i++) {
@@ -201,4 +197,78 @@ void Simulation::init(string filePath) {
     cout << "Window " << i << " was idle for " << windowArray[i].idleTime <<
     " minutes" << endl;
   }
+
+  //Student stats ==============================================================
+  double meanStudents = 0;
+  int longestStudent = studentWait[0];
+  int temp = 0;
+  int students10 = 0;
+
+  for(int i = 0; i < totalStudents; i++)
+  {
+    temp = studentWait[i];
+    if(longestStudent < temp)
+    {
+      longestStudent = temp;
+    }
+
+    if(studentWait[i] > 5)
+    {
+      students10++;
+    }
+    meanStudents+= studentWait[i];
+  }
+  cout << "\nMEAN OF STUDENT WAIT TIME: " << meanStudents / totalStudents << " min(s)" << endl;
+  cout << "MEDIAN STUDENT WAIT TIME: " << calcMedian(studentWait,totalStudents) << " min(s)" << endl;
+  cout << "LONGEST WAIT TIME FOR A STUDENT: " << longestStudent << " min(s)" << endl;
+  cout << "NUMBER OF STUDENTS WHO WAITED FOR OVER 10 MINS: " << students10 << " student(s)\n" << endl;
+
+  //Window Stats ===============================================================
+  double meanWindow = 0;
+  int longestWindow = windowArray[0].idleTime;
+  temp = 0;
+  int windows5 = 0;
+
+  for(int i = 0; i < numWindows; i++)
+  {
+    temp = windowArray[i].idleTime;
+    if(longestWindow < temp)
+    {
+      longestWindow = temp;
+    }
+
+    if(windowArray[i].idleTime > 5)
+    {
+      windows5++;
+    }
+    meanWindow+= windowArray[i].idleTime;
+  }
+  cout << "MEAN OF WINDOW IDLE TIME: " << meanWindow / numWindows << " min(s)" << endl;
+  cout << "LONGEST IDLE TIME FOR A WINDOW: " << longestWindow << " min(s)" << endl;
+  cout << "NUMBER OF WINDOWS IDLE FOR OVER 5 MINS: " << windows5 << " window(s)" << endl;
+}
+
+double Simulation::calcMedian(int arr[], int arrLength) {
+  bubbleSort(arr,arrLength);
+  if (arrLength % 2 != 0)
+       return (double)arr[arrLength/2];
+
+    return (double)(arr[(arrLength-1)/2] + arr[arrLength/2])/2.0;
+}
+void Simulation::swap(int *first, int *second)
+{
+    int temp = *first;
+    *first = *second;
+    *second = temp;
+}
+
+void Simulation::bubbleSort(int arr[], int n)
+{
+   int i;
+   int j;
+   for (i = 0; i < n-1; i++)
+
+       for (j = 0; j < n-i-1; j++)
+           if (arr[j] > arr[j+1])
+              swap(&arr[j], &arr[j+1]);
 }
