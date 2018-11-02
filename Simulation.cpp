@@ -70,13 +70,22 @@ void Simulation::init(string filePath) {
   studentList.printList();
   Window windowArray[numWindows];
   int time = 0;
+  //===========================================================================
   while(true) { //main loop
   cout << "TIME: " << time << endl << endl;
-  if(studentLine.isEmpty()) {
-    if(studentList.getSize() == 0){
+  if(studentLine.isEmpty() && studentList.isEmpty()) {
+    bool exit = true;
+    for(int i = 0; i < numWindows; i++) {
+      if(windowArray[i].hasStudent())
+      exit = false;
+    }
+    cout << "here" << endl;
+    if(exit)
+    {
       break;
     }
   }
+
     cout << "print list: " << endl;
     studentList.printList();
     //Iterate through student list to put them into Queue
@@ -115,9 +124,9 @@ void Simulation::init(string filePath) {
     //check if any windows are empty
     for(int i = 0; i < numWindows; i++) {
         //if a window is empty, fill it with next student in queue **Don't forget to set student's wait time**
-      if(time == 5) {
+      /*if(time == 5) {
         exit(EXIT_FAILURE);
-      }
+      }*/
       if(!windowArray[i].hasStudent()) {
 
         if(!studentLine.isEmpty()) {

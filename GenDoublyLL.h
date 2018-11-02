@@ -33,6 +33,8 @@ class GenDoublyLL
     T deletePos(int pos);
     int find(T value);
 
+    bool isEmpty();
+
     void printList();
     unsigned int getSize();
     ListNode<T>* getFront();
@@ -274,6 +276,11 @@ template <class T>
 ListNode<T>* GenDoublyLL<T>::getFront()
 {
   return front;
+}
+
+template <class T>
+bool GenDoublyLL<T>::isEmpty() {
+  return size == 0;
 }
 
 template <class T>
