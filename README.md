@@ -46,7 +46,8 @@ run simulation
 calc Stats
 save stats to file
 
-
+https://www.geeksforgeeks.org/bubble-sort/
+https://www.geeksforgeeks.org/program-for-mean-and-median-of-an-unsorted-array/
 
 
 mean student
