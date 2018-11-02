@@ -17,19 +17,19 @@ Simulation::~Simulation() {
 }
 
 void Simulation::init(string filePath) {
-  GenQueue<Student> studentLine;
-  GenDoublyLL<Student> studentList;
-  string line;
+  GenQueue<Student> studentLine; //making a line for students
+  GenDoublyLL<Student> studentList; //the list of students before they arrive
+  string line; //the FILE LINE string
   int numWindows;
   int totalStudents;
 
-  FileIO io(filePath);
+  FileIO io(filePath); //allows file IO for this program
   int numLines = io.countLines();//how many lines are in file
   int parsedFile[numLines]; //array of size file length
 
-  ifstream& inFile = io.getInFile();
+  ifstream& inFile = io.getInFile(); //get the file stream
 
-  int count = 0;
+  int count = 0; //for location of data in the parsedFile array
   while(getline(inFile, line))
   {
     try //catch incorrect data type in the inputted file
@@ -67,8 +67,9 @@ void Simulation::init(string filePath) {
   int k = 0;
   int time = 0;
   //===========================================================================
-  while(true) { //main loop
-  if(studentLine.isEmpty() && studentList.isEmpty()) {
+  while(true) { //main loop that controls the time and everything that happens in simulation
+
+  if(studentLine.isEmpty() && studentList.isEmpty()) { //checks if program needs to end
     bool exit = true;
     for(int i = 0; i < numWindows; i++) {
       if(windowArray[i].hasStudent())
@@ -119,6 +120,7 @@ void Simulation::init(string filePath) {
       }
     }
 
+    //check line is empty and the list of students is empty to prevent time from incrementing when the program should finish
     if(studentLine.isEmpty() && studentList.isEmpty()) {
       bool exit = true;
       for(int i = 0; i < numWindows; i++) {
@@ -132,6 +134,8 @@ void Simulation::init(string filePath) {
     }
 
     time++;
+
+    //incrementers for data
     for(int i = 0; i < numWindows; i++)
     {
       if(!windowArray[i].hasStudent())
@@ -197,6 +201,8 @@ void Simulation::init(string filePath) {
   cout << "NUMBER OF WINDOWS IDLE FOR OVER 5 MINS: " << windows5 << " window(s)" << endl;
 }
 
+
+//median calculation methods==================================================
 double Simulation::calcMedian(int arr[], int arrLength) {
   bubbleSort(arr,arrLength);
   if (arrLength % 2 != 0)

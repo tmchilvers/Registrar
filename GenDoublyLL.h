@@ -6,10 +6,6 @@
 
 using namespace std;
 
-
-
-
-
 //template class================================================================
 template <class T>
 class GenDoublyLL
