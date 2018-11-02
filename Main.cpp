@@ -20,8 +20,8 @@ int main(int argc, char **argv) {
   }
 
 
-  Simulation simulation;
-  simulation.init(filePath);
+  Simulation simulation; //creates new simulation object
+  simulation.init(filePath); //runs simulation
 
   return 0;
 }

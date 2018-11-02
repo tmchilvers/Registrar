@@ -9,10 +9,10 @@ using namespace std;
 template <class T>
 class GenQueue {
 public:
-  GenQueue();
-  ~GenQueue();
-  void insert(T* data);
-  T* remove();
+  GenQueue(); //constructor
+  ~GenQueue(); //destructor
+  void insert(T* data); //insert T pointer
+  T* remove(); //remove and return T pointer
   T* peek();
 
   bool isEmpty();
@@ -23,8 +23,6 @@ public:
   GenDoublyLL<T> *myQueue;
 
 private:
-  //ListNode<T> *front;
-  //ListeNode<T> *back;
   int size;
 
 };
@@ -32,15 +30,13 @@ private:
 //Template Functions============================================================
 template <class T>
 GenQueue<T>::GenQueue() {
-  //front = NULL;
-  //rear = NULL;
   size = 0;
   myQueue = new GenDoublyLL<T>();
 }
 
 template <class T>
 GenQueue<T>::~GenQueue() {
-
+  delete myQueue;
 }
 
 template <class T>

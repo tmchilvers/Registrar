@@ -23,10 +23,10 @@ class GenDoublyLL
     GenDoublyLL();
     ~GenDoublyLL();
 
-    void insertFront(T);
+    void insertFront(T*);
     void insertBack(T*);
     T* removeFront();
-    T removeBack();
+    T* removeBack();
     ListNode<T> *remove(T key);
 
     T deletePos(int pos);
@@ -64,7 +64,7 @@ GenDoublyLL<T>::~GenDoublyLL()
 }
 
 template <class T>
-void GenDoublyLL<T>::insertFront(T d)
+void GenDoublyLL<T>::insertFront(T* d)
 {
   ListNode<T> *node = new ListNode<T>(d);
 
@@ -129,7 +129,7 @@ T* GenDoublyLL<T>::removeFront()
 }
 
 template <class T>
-T GenDoublyLL<T>::removeBack()
+T* GenDoublyLL<T>::removeBack()
 {
   ListNode<T> *temp = back;
   if(size == 0)
