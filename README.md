@@ -46,5 +46,14 @@ run simulation
 calc Stats
 save stats to file
 
-Resources--
-https://www.geeksforgeeks.org/bubble-sort/
+
+
+
+mean student
+median student
+longest student wait TIME
+number of students waiting over ten minutes
+
+mean window idle
+longest window idle
+number of windows idle over 5 minutes
